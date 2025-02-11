@@ -8,19 +8,13 @@
 #define MAX_SEQ 5
 #define TIMEOUT 1500
 
-/*  CASO QUEIRA UTILIZAR TODAS AS LETRAS DO ALFABETO
-
 const char *morse_alfabeto[] = {
-    ".-",   "-...", "-.-.", "-..",  ".",    "..-.", "--.",  "....", "..",   // A-I
-    ".---", "-.-",  ".-..", "--",   "-.",   "---",  ".--.", "--.-", ".-.", // J-R
-    "...",  "-",    "..-",  "...-", ".--",  "-..-", "-.--", "--.."      // S-Z
+    ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..",   // A-I
+    ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", // J-R
+    "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."         // S-Z
 };
 
 const char alfabeto[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-*/
-
-const char *morse_vogais[] = {".-", ".", "..", "---", "..-"};
-const char vogais[] = "AEIOU";
 const char *morse_espaco = "-----";
 
 char codigo[MAX_SEQ + 1];
@@ -44,16 +38,16 @@ void adicionar_simbolo(char simbolo)
 
 char traduzir_morse()
 {
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 26; i++)
     {
         if (strcmp(codigo, morse_espaco) == 0)
         {
             return ' ';
         }
 
-        if (strcmp(codigo, morse_vogais[i]) == 0)
+        if (strcmp(codigo, morse_alfabeto[i]) == 0)
         {
-            return vogais[i];
+            return alfabeto[i];
         }
     }
     return '?';
